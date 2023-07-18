@@ -1,0 +1,101 @@
+replicaCount: {{ replicaCount }}
+
+image:
+  repository: {{ repository }}
+  pullPolicy: {{ pullPolicy }}
+  tag: {{ tag }}
+
+imagePullSecrets: {{ imagePullSecrets }}
+
+nameOverride: {{ nameOverride }}
+fullnameOverride: {{ fullnameOverride }}
+
+serviceAccount:
+  create: {{ create }}
+  annotations: {{ annotations }}
+  name: {{ name }}
+
+podAnnotations: {{ podAnnotations }}
+
+podSecurityContext: {{ podSecurityContext }}
+
+securityContext: {{ securityContext }}
+
+service:
+  apiVersion: {{ service_apiVersion }}
+  kind: {{ service_kind }}
+  metadata:
+    name: {{ service_name }}
+  port: {{ service_port }}
+  portName: {{ service_port_name }}
+  protocol: {{ service_protocol }}
+  selector:
+    name: {{ service_selector_name }}
+  targetPort: {{ service_targetPort }}
+
+ingress:
+  enabled: {{ enabled }}
+  className: {{ ingress_ingressClassName }}
+  annotations: {{ ingress_annotations }}
+  apiVersion: {{ ingress_apiversion }}
+  kind: {{ ingress_kind }}
+  metadata: {{ ingress_metadata }}
+  name: {{ ingress_name }}
+  number: {{ ingress_number }}
+  path: {{ ingress_path }}
+  paths: {{ ingress_paths }}
+  pathType: {{ ingress_pathtype }}
+  port: {{ ingress_port }}
+  rules: {{ ingress_rules }}
+  service: {{ ingress_service }}
+  spec: {{ ingress_spec }}
+
+resources: {{ resources }}
+
+autoscaling:
+  enabled: {{ autoscaling }}
+  minReplicas: {{ minReplicas }}
+  maxReplicas: {{ maxReplicas }}
+  targetCPUUtilizationPercentage: {{ targetCPUUtilizationPercentage }}
+
+nodeSelector: {{ nodeSelector }}
+
+tolerations: {{ tolerations }}
+
+affinity: {{ affinity }}
+
+hpa:
+  apiVersion: {{ hpa_apiVersion }}
+  kind: {{ hpa_kind }}
+  metadata: {{ hpa_metadata }}
+  name: {{ hpa_name }}
+  maxReplicas: {{ hpa_maxReplicas }}
+  minReplicas: {{ hpa_minReplicas }}
+  scaleTargetRef:
+    {% if hpa_scaleTargetRef %}
+      apiVersion: {{ hpa_scaleTargetRef.apiVersion }}
+      kind: {{ hpa_scaleTargetRef.kind }}
+      name: {{ hpa_scaleTargetRef.name }}
+    {% else %}
+      apiVersion: ""
+      kind: ""
+      name: ""
+    {% endif %}
+  spec: {{ hpa_spec }}
+  metrics:
+    - type: {{ hpa_metrics_type }}
+      resource:
+        name: {{ hpa_metrics_name }}
+        {% if hpa_metrics_target %}
+          target:
+            {{ hpa_metrics_target | indent(12) }}
+        {% else %}
+          target: null
+        {% endif %}
+
+configmap:
+  apiVersion: {{ configmap_apiVersion }}
+  kind: {{ configmap_kind }}
+  metadata: {{ configmap_metadata }}
+  name: {{ configmap_name }}
+  data: {{ configmap_data }}

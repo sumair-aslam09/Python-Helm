@@ -1,0 +1,94 @@
+replicaCount: None
+
+image:
+  repository: None
+  pullPolicy: None
+  tag: None
+
+imagePullSecrets: None
+
+nameOverride: None
+fullnameOverride: None
+
+serviceAccount:
+  create: True
+  annotations: None
+  name: my-service-account
+
+podAnnotations: None
+
+podSecurityContext: 
+
+securityContext: None
+
+service:
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: my-service
+  port: 80
+  portName: http
+  protocol: TCP
+  selector:
+    name: MyApp
+  targetPort: 9376
+
+ingress:
+  enabled: None
+  className: None
+  annotations: None
+  apiVersion: v1
+  kind: service
+  metadata: None
+  name: None
+  number: 80
+  path: None
+  paths: None
+  pathType: None
+  port: None
+  rules: None
+  service: None
+  spec: None
+
+resources: 
+
+autoscaling:
+  enabled: None
+  minReplicas: None
+  maxReplicas: None
+  targetCPUUtilizationPercentage: None
+
+nodeSelector: None
+
+tolerations: None
+
+affinity: None
+
+hpa:
+  apiVersion: autoscaling/v2beta1
+  kind: HorizontalPodAutoscaler
+  metadata: None
+  name: my-hpa
+  maxReplicas: 5
+  minReplicas: 2
+  scaleTargetRef:
+    
+      apiVersion: ""
+      kind: ""
+      name: ""
+    
+  spec: None
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        
+          target: null
+        
+
+configmap:
+  apiVersion: v1
+  kind: ConfigMap
+  metadata: None
+  name: game-demosss
+  data: None

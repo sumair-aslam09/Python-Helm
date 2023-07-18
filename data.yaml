@@ -1,0 +1,129 @@
+#chart.yaml:
+chart_apiVersion: v2
+chart_appVersion: v0.1.0
+chart_description: null
+chart_name: mychart
+chart_version: v0.1.0
+
+#config map:
+configmap_apiVersion: v1
+configmap_data: null
+configmap_kind: ConfigMap
+configmap_metadata: null
+configmap_name: game-demosss
+
+#deployment:
+deployment_apiversion: BBSI-PROD
+deployment_kind: Deployment
+deployment_metadata: null
+deployment_name: my-deployment
+deployment_app_name_label: nginx
+#deployment_annotations: null
+deployment_spec: null
+deployment_spec_replicas: 3
+deployment_spec_selector: null
+doployment_image_name: nginx:1.14.2
+deployment_container_name: nginx
+deployment_port: 80
+readiness_probe_path: ref-data/management/health/readiness
+readiness_probe_type: httpGet
+readiness_probe_port: 80
+readiness_probe_initialDelaySeconds: 100
+readiness_probe_periodSeconds: 20
+readiness_probe_timeoutSeconds: 10
+readiness_probe_failureThreshold: null
+liveness_probe_path: ref-data/management/health/liveness
+liveness_probe_type: httpGet
+liveness_probe_port: 80
+null: null
+
+#hpa.yaml:
+deployment_apiVersion: apps/v1
+#deployment_kind: Deployment
+#deployment_name: my-deployment
+hpa_apiVersion: autoscaling/v2beta1
+hpa_kind: HorizontalPodAutoscaler
+hpa_maxReplicas: 5
+hpa_metadata: null
+hpa_metrics: null
+hpa_metrics_name: cpu
+hpa_metrics_target: null
+hpa_metrics_type: Resource
+hpa_minReplicas: 2
+hpa_name: my-hpa
+hpa_scaleTargetRef: null
+hpa_spec: null
+
+#ingress.yaml:
+ingress_annotations: null
+ingress_apiversion: v1
+ingress_backend: null
+ingress_http: http
+ingress_ingressClassName: null
+ingress_kind: service
+ingress_metadata: null
+ingress_name: null
+ingress_nginx.ingress.kubernetes.io/rewrite-target: null
+ingress_number: 80
+ingress_path: null
+ingress_paths: null
+ingress_pathtype: null
+ingress_port: null
+ingress_rules: null
+ingress_service: null
+ingress_spec: null
+
+#service.yaml:
+service_apiVersion: v1
+service_kind: Service
+service_metadata: null
+service_name: my-service
+service_port: 80
+service_port_name: http
+service_ports: null
+service_protocol: TCP
+service_selector: null
+service_selector_name: MyApp
+service_spec: null
+service_targetPort: 9376
+
+#values.yaml:
+affinity: null
+annotations: null
+autoscaling: null
+className: null
+create: true
+enabled: null
+fullnameOverride: null
+host: null
+hosts: null
+image: null
+imagePullSecrets: null
+ingress: null
+maxReplicas: null
+minReplicas: null
+nameOverride: null
+nodeSelector: null
+path: null
+pathType: null
+paths: null
+podAnnotations: null
+podSecurityAnnotations: null
+port: null
+pullPolicy: null
+replicaCount: null
+repository: null
+securityContext: null
+service: null
+serviceAccount: null
+tag: null
+targetCPUUtilizationPercentage: null
+tls: null
+tolerations: null
+type: null
+name: my-service-account
+
+# deployment_annotations:
+#   app: MyApp
+#   environment: Production
+#   team: Engineering
